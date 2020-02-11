@@ -1,14 +1,14 @@
 <div class="title-app text-center">
   <div class="col-12">
-    <p class="title title-white">Rating People</p>
+    <p class="title">Rating People</p>
   </div>
-  <div class="col-12">
-    <mat-icon class="title-white">star</mat-icon>
-    <mat-icon class="title-white">star</mat-icon>
-    <mat-icon class="title-white">star</mat-icon>
-    <mat-icon class="title-white">star</mat-icon>
-    <mat-icon class="title-white">star</mat-icon>
-  </div>
+  <!-- <div class="col-12">
+    <mat-icon style="color: #2f89fc;">star</mat-icon>
+    <mat-icon style="color: #2f89fc;">star</mat-icon>
+    <mat-icon style="color: #2f89fc;">star</mat-icon>
+    <mat-icon style="color: #2f89fc;">star</mat-icon>
+    <mat-icon style="color: #2f89fc;">star</mat-icon>
+  </div> -->
 </div>
 <div class="row p-2">
   <div class="col col-4">
@@ -46,10 +46,10 @@
       </div>
       <div class="field is-grouped">
         <div class="control">
-          <button class="button is-link">Submit</button>
+          <button mat-flat-button class="success">Submit</button>
         </div>
         <div class="control">
-          <button class="button is-link is-light">Cancel</button>
+          <button mat-flat-button class="danger">Cancel</button>
         </div>
       </div>
     </div>
@@ -59,11 +59,19 @@
       <div style="padding: 3px;" class="col-12">
         <div class="field">
           <div class="control">
-            <input class="input" type="text" placeholder="Search..." />
+            <input
+              #filterField
+              class="input"
+              type="text"
+              placeholder="Search..."
+            />
           </div>
         </div>
       </div>
-      <div class="col-3 p-1" *ngFor="let person of people">
+      <div
+        class="col-3 p-1"
+        *ngFor="let person of people | customFilter: filterField.value"
+      >
         <mat-card>
           <mat-card-title>{{ person.username | titlecase }}</mat-card-title>
           <mat-card-subtitle>{{ person.name | titlecase }}</mat-card-subtitle>
@@ -85,11 +93,7 @@
                         width: fit-content;
                       "
             >
-              <button mat-icon-button><mat-icon>star</mat-icon></button>
-              <button mat-icon-button><mat-icon>star</mat-icon></button>
-              <button mat-icon-button><mat-icon>star</mat-icon></button>
-              <button mat-icon-button><mat-icon>star</mat-icon></button>
-              <button mat-icon-button><mat-icon>star</mat-icon></button>
+              <ngb-rating max="5" [(rate)]="person.rate"></ngb-rating>
             </div>
             <mat-expansion-panel>
               <mat-expansion-panel-header
@@ -124,6 +128,7 @@
             </div>
             <button
               mat-flat-button
+              class="success"
               (click)="comment(person.id, commentField.value)"
             >
               COMMENT

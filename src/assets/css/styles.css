@@ -2,12 +2,12 @@ html,
 body {
   padding: 0;
   margin: 0;
-  background-color: #303a52;
+  background-color: #40514e;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 .form-container {
-  background-color: #fc85ae;
+  background-color: #2f89fc;
   padding: 45px;
   position: fixed;
   top: 100px;
@@ -16,21 +16,21 @@ body {
 }
 
 .people-container {
-  background-color: #fc85ae;
+  background-color: #30e3ca;
   padding: 10px;
   border-radius: 4px;
 }
 
 mat-card {
   text-align: center;
-  background-color: #574b90 !important;
+  background-color: #2f89fc !important;
 }
 
 mat-expansion-panel {
   margin: 2px !important;
 }
 
-mat-expansion-panel>.mat-expansion-panel-content {
+mat-expansion-panel > .mat-expansion-panel-content {
   display: block !important;
   overflow: visible;
 }
@@ -40,11 +40,17 @@ mat-card-subtitle,
 mat-card-content,
 mat-card-actions,
 .mat-flat-button {
-  color: #ffffff !important;
+  color: #ffffff;
 }
 
-.mat-flat-button {
-  background-color: #9e579d;
+.mat-flat-button.success {
+  background-color: #40514e;
+  margin: 10px !important;
+}
+
+.mat-flat-button.danger {
+  color: #40514e;
+  background-color: #f5f5f5;
   margin: 10px !important;
 }
 
@@ -58,7 +64,7 @@ mat-card > .mat-card-image {
 }
 
 .title-app {
-  background-color: #9e579d;
+  background-color: #f5f5f5;
   margin: 0px 0px 10px 10px;
   padding: 10px;
   height: 55px;
@@ -70,4 +76,13 @@ mat-card > .mat-card-image {
 
 .title-white {
   color: #ffffff;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }

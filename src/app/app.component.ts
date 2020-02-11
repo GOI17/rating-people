@@ -22,8 +22,8 @@ export class AppComponent implements OnInit {
 
   comment(id: number, comment: string) {
     const index = this.people.findIndex(person => person.id === id);
-    console.log(this.people[index]);
     const newComment = { content: comment, time: Date.now() };
     this.people[index].comments = [...this.people[index].comments, newComment];
   }
+
 }
