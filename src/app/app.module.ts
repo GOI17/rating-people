@@ -8,10 +8,18 @@ import { FilterPipe } from './filter.pipe';
 
 import { MaterialModule } from '@assets/material-module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CommentsComponent } from './dialogs/comments.component';
 
 @NgModule({
-  declarations: [AppComponent, FilterPipe],
-  imports: [BrowserModule, BrowserAnimationsModule, MaterialModule, NgbModule, HttpClientModule],
+  declarations: [AppComponent, CommentsComponent, FilterPipe],
+  entryComponents: [CommentsComponent],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    MaterialModule,
+    NgbModule,
+    HttpClientModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

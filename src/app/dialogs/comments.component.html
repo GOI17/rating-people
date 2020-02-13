@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-6 mx-auto text-center">
+    <p class="app-title-text">Comments</p>
+  </div>
+  <div class="col-12" *ngFor="let comment of data.comments">
+    <div class="row">
+      <span style="float: left;">
+        {{ comment.rate }}
+        <ngb-rating
+          [rate]="comment.rate"
+          [readonly]="true"
+          max="5"
+        ></ngb-rating>
+      </span>
+    </div>
+    <div class="row">
+      {{ comment.comment }}
+    </div>
+    <span style="float: right;">
+      {{ comment.time | date }}
+    </span>
+  </div>
+</div>
