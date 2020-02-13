@@ -101,6 +101,7 @@ export class AppComponent implements OnInit {
     const index = this.people.findIndex(person => person.id === id);
     this.commentsDialog.open(CommentsComponent, {
       maxWidth: '800px',
+      minWidth: '800px',
       data: {
         comments: this.people[index].comments
       }
