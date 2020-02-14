@@ -1,0 +1,40 @@
+<div class="col-4">
+  <mat-form-field appearance="outline" style="width: 100%">
+    <mat-label>Name</mat-label>
+    <input #name matInput placeholder="Placeholder" />
+    <mat-icon matSuffix>person</mat-icon>
+    <mat-hint>Enter blah, blah...</mat-hint>
+  </mat-form-field>
+</div>
+<div class="col-4">
+  <mat-form-field appearance="outline" style="width: 100%">
+    <mat-label>Username</mat-label>
+    <input #username matInput placeholder="Placeholder" />
+    <mat-icon matSuffix>person</mat-icon>
+    <mat-hint>Enter blah, blah...</mat-hint>
+  </mat-form-field>
+</div>
+<div class="col-4">
+  <mat-form-field appearance="outline" style="width: 100%">
+    <mat-label>Service</mat-label>
+    <mat-select #service>
+      <mat-option value="" selected disabled>Select a service</mat-option>
+      <mat-option value="uber">Uber</mat-option>
+      <mat-option value="cabify">Cabify</mat-option>
+      <mat-option value="didi">DiDi</mat-option>
+    </mat-select>
+    <mat-hint>Enter blah, blah...</mat-hint>
+  </mat-form-field>
+</div>
+<div class="col-2 mx-auto mb-2">
+  <button
+    mat-button
+    style="width: 100%; font-size: 15pt;"
+    [disabled]="
+      name.value === '' || username.value === '' || service.value === undefined
+    "
+    (click)="addPerson(name.value, username.value, service.value)"
+  >
+    Add
+  </button>
+</div>

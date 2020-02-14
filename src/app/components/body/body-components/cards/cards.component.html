@@ -1,0 +1,7 @@
+<div class="row mx-auto">
+  <!-- Cards -->
+  <div class="col-3 text-center" *ngFor="let person of people$ | async">
+    <!-- Card -->
+    <app-body-cards-card [person]="person"></app-body-cards-card>
+  </div>
+</div>

@@ -1,0 +1,58 @@
+<!-- Card -->
+<div class="m-2 p-2 card">
+  <!-- Cards Avatar -->
+  <div class="co-12">
+    <img
+      [src]="person.avatar"
+      width="230"
+      height="230"
+      style="border-radius: 4px;"
+      [alt]="person.name"
+    />
+  </div>
+  <!-- Cards Username -->
+  <div class="col-12">
+    <span
+      class="card-text"
+      style="font-size: 18pt; font-weight: 300; color: #000000;"
+    >
+      {{ person.username | titlecase }}
+    </span>
+  </div>
+  <!-- Cards Name -->
+  <div class="col-12">
+    <span
+      class="card-text"
+      style="font-size: 18pt; font-weight: 300; color: #000000;"
+    >
+      {{ person.name | titlecase }}
+    </span>
+  </div>
+  <!-- Cards Rate -->
+  <div class="col-12">
+    <span
+      class="card-text"
+      style="font-size: 18pt; font-weight: 300; color: #000000;"
+    >
+      {{ person.rate | number }}
+      <mat-icon>
+        star
+      </mat-icon>
+    </span>
+  </div>
+  <div class="row">
+    <div class="col">
+      <button mat-button style="width: 100%;" (click)="openComments(person.id)">
+        Comment
+      </button>
+    </div>
+    <div class="col">
+      <button mat-button style="width: 100%;">
+        View comments
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    {{ person$ | async | json }}
+  </div>
+</div>
