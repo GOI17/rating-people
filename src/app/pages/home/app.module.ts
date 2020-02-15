@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from '@assets/material-module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { CommentsComponent } from '@dialogs/comments.component';
+import { CommentsComponent } from '@dialogs/comments/comments.component';
 import { AppHeaderComponent } from '@components/header/header.component';
 import { AppHeaderPersonFormComponent } from '@components/header/header-components/person-form/personform.component';
 import { AppBodyComponent } from '@components/body/body.component';
@@ -13,6 +13,7 @@ import { AppFooterComponent } from '@components/footer/footer.component';
 import { AppBodyTitleComponent } from '@components/body/body-components/title/title.component';
 import { AppBodyCardsComponent } from '@components/body/body-components/cards/cards.component';
 import { AppBodyCardsCardComponent } from '@components/body/body-components/cards/cards-components/card/card.component';
+import { AppCommentsFormComponent } from '@dialogs/comments/comments-components/form/commentform.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { AppBodyCardsCardComponent } from '@components/body/body-components/card
     AppBodyCardsCardComponent,
     AppFooterComponent,
     CommentsComponent,
+    AppCommentsFormComponent
   ],
   entryComponents: [CommentsComponent],
   imports: [

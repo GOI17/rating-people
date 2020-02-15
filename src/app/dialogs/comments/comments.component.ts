@@ -7,12 +7,14 @@ import { DialogData } from '@interfaces/dialogdata.interface';
   templateUrl: 'comments.component.html'
 })
 export class CommentsComponent implements OnInit {
+  enableCommentsForm: boolean = false;
+
   constructor(
     public context: MatDialogRef<CommentsComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData
   ) {}
 
   ngOnInit() {
-    console.log(this.data.comments);
+    this.enableCommentsForm = this.data.comment ? true : false;
   }
 }

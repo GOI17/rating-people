@@ -38,3 +38,16 @@
     Add
   </button>
 </div>
+<div class="col-12">
+  <ng-container *ngIf="serverError$ | async as error">
+    <div class="col-12">
+      <span style="color: red;"> Status Code: {{ error.status }} </span><br />
+      <span style="color: red;"> Status: {{ error.ok }} </span><br />
+      <a href="{{ error.url }}">{{ error.url }}</a>
+      <br />
+      <span style="color: black; font-size: 14pt;">
+        {{ error.error }}
+      </span>
+    </div>
+  </ng-container>
+</div>

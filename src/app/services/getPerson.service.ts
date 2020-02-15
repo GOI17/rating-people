@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { shareReplay, map } from 'rxjs/operators';
-import { BehaviorSubject, Observable, combineLatest } from 'rxjs';
+import {  map } from 'rxjs/operators';
+import { BehaviorSubject, combineLatest } from 'rxjs';
+import { People } from './people.service';
 
 @Injectable({ providedIn: 'root' })
-export class GetPeople {
-  private readonly url = 'https://jsonplaceholder.ir/users';
-  people$: Observable<any> = this.http.get<any>(this.url).pipe(shareReplay());
+export class GetPerson {
+  people$ = this.people.people$;
   private personSelectedAction: BehaviorSubject<number> = new BehaviorSubject(0);
   selectedPerson$ = combineLatest(this.personSelectedAction, this.people$).pipe(
     map(([selectedPersonId, people]) =>
@@ -14,7 +13,7 @@ export class GetPeople {
     )
   );
 
-  constructor(private http: HttpClient) {}
+  constructor(private people: People) {}
 
   changeSelectedPerson(id: number) {
     this.personSelectedAction.next(id);

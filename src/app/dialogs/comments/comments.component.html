@@ -2,11 +2,21 @@
   <div class="col-6 mx-auto text-center">
     <p class="app-title-text">Comments</p>
   </div>
-  <button mat-stroked-button style="float: right;">
-    <mat-icon>
+  <button
+    mat-stroked-button
+    style="float: right;"
+    (click)="enableCommentsForm = !enableCommentsForm ? true : false"
+  >
+    <mat-icon *ngIf="!enableCommentsForm">
       add
     </mat-icon>
+    <mat-icon *ngIf="enableCommentsForm">
+      remove
+    </mat-icon>
   </button>
+  <div class="col-12" *ngIf="enableCommentsForm">
+    <app-comments-form></app-comments-form>
+  </div>
   <div class="col-12" *ngFor="let comment of data.comments">
     <div class="row">
       <span style="float: left;">

@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="col-12">
+    <mat-form-field appearance="outline" style="width: 100%">
+      <mat-label>Leave a comment</mat-label>
+      <textarea
+        #commentField
+        matInput
+        placeholder="Ex. It makes me feel..."
+      ></textarea>
+    </mat-form-field>
+  </div>
+  <div class="col-12">
+    <span style="float: right;">
+      <ngb-rating [(rate)]="currentRate" max="5"></ngb-rating>
+      {{ currentRate | number }}/5
+    </span>
+  </div>
+  <div class="col-2 mx-auto mb-2">
+    <button
+      mat-button
+      style="width: 100%; font-size: 15pt;"
+      [disabled]="commentField.value === '' || currentRate === 0"
+      (click)="comment({ comment: commentField.value, rate: currentRate })"
+    >
+      Add
+    </button>
+  </div>
+  <div class="col-12">
+    <ng-container *ngIf="serverError$ | async as error">
+      <div class="col-12">
+        <span style="color: red;"> Status Code: {{ error.status }} </span><br />
+        <span style="color: red;"> Status: {{ error.ok }} </span><br />
+        <a href="{{ error.url }}">{{ error.url }}</a>
+        <br />
+        <span style="color: black; font-size: 14pt;">
+          {{ error.error }}
+        </span>
+      </div>
+    </ng-container>
+  </div>
+</div>
