@@ -1,53 +1,79 @@
-<div class="col-4">
-  <mat-form-field appearance="outline" style="width: 100%">
-    <mat-label>Name</mat-label>
-    <input #name matInput placeholder="Placeholder" />
-    <mat-icon matSuffix>person</mat-icon>
-    <mat-hint>Enter blah, blah...</mat-hint>
-  </mat-form-field>
-</div>
-<div class="col-4">
-  <mat-form-field appearance="outline" style="width: 100%">
-    <mat-label>Username</mat-label>
-    <input #username matInput placeholder="Placeholder" />
-    <mat-icon matSuffix>person</mat-icon>
-    <mat-hint>Enter blah, blah...</mat-hint>
-  </mat-form-field>
-</div>
-<div class="col-4">
-  <mat-form-field appearance="outline" style="width: 100%">
-    <mat-label>Service</mat-label>
-    <mat-select #service>
-      <mat-option value="" selected disabled>Select a service</mat-option>
-      <mat-option value="uber">Uber</mat-option>
-      <mat-option value="cabify">Cabify</mat-option>
-      <mat-option value="didi">DiDi</mat-option>
-    </mat-select>
-    <mat-hint>Enter blah, blah...</mat-hint>
-  </mat-form-field>
-</div>
-<div class="col-2 mx-auto mb-2">
-  <button
-    mat-button
-    style="width: 100%; font-size: 15pt;"
-    [disabled]="
-      name.value === '' || username.value === '' || service.value === undefined
-    "
-    (click)="addPerson(name.value, username.value, service.value)"
-  >
-    Add
-  </button>
-</div>
-<div class="col-12">
-  <ng-container *ngIf="serverError$ | async as error">
-    <div class="col-12">
-      <span style="color: red;"> Status Code: {{ error.status }} </span><br />
-      <span style="color: red;"> Status: {{ error.ok }} </span><br />
-      <a href="{{ error.url }}">{{ error.url }}</a>
-      <br />
-      <span style="color: black; font-size: 14pt;">
-        {{ error.error }}
-      </span>
-    </div>
-  </ng-container>
-</div>
+<form class="row col-12 mx-auto" [formGroup]="form" (ngSubmit)="(form)">
+  <div class="col-12 col-md-4">
+    <mat-form-field appearance="outline" style="width: 100%">
+      <mat-label>Name</mat-label>
+      <input
+        matInput
+        placeholder="Placeholder"
+        formControlName="name"
+        required
+      />
+      <mat-icon matSuffix>person</mat-icon>
+      <mat-hint
+        *ngIf="name.touched && name.invalid && name.hasError('required')"
+        >* Name is required</mat-hint
+      >
+      <mat-hint *ngIf="name.touched && name.invalid && name.hasError('pattern')"
+        >* Invalid Name</mat-hint
+      >
+      <mat-hint
+        *ngIf="name.touched && name.invalid && name.hasError('nameRegistered')"
+        >* The person is already registered</mat-hint
+      >
+    </mat-form-field>
+  </div>
+  <div class="col-12 col-md-4">
+    <mat-form-field appearance="outline" style="width: 100%">
+      <mat-label>Username</mat-label>
+      <input matInput placeholder="Placeholder" formControlName="username" />
+      <mat-icon matSuffix>person</mat-icon>
+      <mat-hint
+        *ngIf="
+          username.touched && username.invalid && username.hasError('required')
+        "
+        >* Username is required</mat-hint
+      >
+    </mat-form-field>
+  </div>
+  <div class="col-12 col-md-4">
+    <mat-form-field appearance="outline" style="width: 100%">
+      <mat-label>Service</mat-label>
+      <mat-select formControlName="service">
+        <mat-option value="" selected disabled>Select a service</mat-option>
+        <mat-option value="uber">Uber</mat-option>
+        <mat-option value="cabify">Cabify</mat-option>
+        <mat-option value="didi">DiDi</mat-option>
+        <mat-option value="other">Other</mat-option>
+      </mat-select>
+      <mat-hint
+        *ngIf="
+          service.touched && service.invalid && service.hasError('required')
+        "
+        >* Service is required</mat-hint
+      >
+    </mat-form-field>
+  </div>
+  <div class="col-12 col-md-2 mx-auto mb-2">
+    <button
+      mat-button
+      style="width: 100%; font-size: 15pt;"
+      [disabled]="!form.valid"
+      (click)="addPerson()"
+    >
+      Add
+    </button>
+  </div>
+  <div class="col-12">
+    <ng-container *ngIf="serverError$ | async as error">
+      <div class="col-12">
+        <span style="color: red;"> Status Code: {{ error.status }} </span><br />
+        <span style="color: red;"> Status: {{ error.ok }} </span><br />
+        <a href="{{ error.url }}">{{ error.url }}</a>
+        <br />
+        <span style="color: black; font-size: 14pt;">
+          {{ error.error }}
+        </span>
+      </div>
+    </ng-container>
+  </div>
+</form>

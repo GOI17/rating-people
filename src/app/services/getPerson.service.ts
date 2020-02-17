@@ -5,7 +5,7 @@ import { People } from './people.service';
 
 @Injectable({ providedIn: 'root' })
 export class GetPerson {
-  people$ = this.people.people$;
+  private people$ = this.people.people$;
   private personSelectedAction: BehaviorSubject<number> = new BehaviorSubject(0);
   selectedPerson$ = combineLatest(this.personSelectedAction, this.people$).pipe(
     map(([selectedPersonId, people]) =>

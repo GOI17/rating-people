@@ -40,8 +40,7 @@ body {
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
-.form-container {
-}
+.form-container {}
 
 .show-form-container {
   height: auto;
@@ -51,6 +50,7 @@ body {
 
 .hide-form-container {
   opacity: 0;
+  display: none;
   height: 0;
   transition: opacity 200ms;
 }

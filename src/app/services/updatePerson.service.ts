@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
+import { GetPerson } from '@services/getPerson.service';
+import { People } from '@services/people.service';
 import { Comment } from '@interfaces/comment.interface';
-import { GetPerson } from './getPerson.service';
-import { People } from './people.service';
+import { take } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class UpdatePerson {
@@ -10,7 +11,7 @@ export class UpdatePerson {
   constructor(private getPerson: GetPerson, private people: People) {}
 
   comment(comment: Comment) {
-    this.selectedPerson$.subscribe(person => {
+    this.selectedPerson$.pipe(take(1)).subscribe(person => {
       person = { ...person, comments: [...person.comments, comment] };
       this.people.update(person);
     });

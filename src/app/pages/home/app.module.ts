@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from '@pages/home/app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '@assets/material-module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommentsComponent } from '@dialogs/comments/comments.component';
@@ -34,7 +35,8 @@ import { AppCommentsFormComponent } from '@dialogs/comments/comments-components/
     BrowserAnimationsModule,
     MaterialModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   bootstrap: [AppComponent]
 })

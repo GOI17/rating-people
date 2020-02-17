@@ -1,6 +1,8 @@
 <div class="row">
-  <div class="col-6 mx-auto text-center">
-    <p class="app-title-text">Comments</p>
+  <div class="col-10 col-md-6 mx-auto text-center">
+    <p class="app-title-text" style="font-size: calc(1.4rem);">
+      {{ data.title }} Comments
+    </p>
   </div>
   <button
     mat-stroked-button
@@ -17,7 +19,7 @@
   <div class="col-12" *ngIf="enableCommentsForm">
     <app-comments-form></app-comments-form>
   </div>
-  <div class="col-12" *ngFor="let comment of data.comments">
+  <div class="col-12" *ngFor="let comment of (person$ | async).comments">
     <div class="row">
       <span style="float: left;">
         <ngb-rating

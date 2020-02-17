@@ -1,6 +1,4 @@
-import { Comment  } from '@interfaces/comment.interface';
-
 export interface DialogData {
-  comments: Comment[];
+  title: string;
   comment: boolean;
 }
