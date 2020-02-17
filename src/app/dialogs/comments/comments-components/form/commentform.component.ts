@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Person } from '@interfaces/person.interface';
 import { Comment } from '@interfaces/comment.interface';
 import { People } from '@services/people.service';
 import { UpdatePerson } from '@services/updatePerson.service';
@@ -9,7 +8,7 @@ import { UpdatePerson } from '@services/updatePerson.service';
   templateUrl: './commentform.component.html'
 })
 export class AppCommentsFormComponent {
-  currentRate: number = 0;
+  currentRate = 0;
   serverError$ = this.peopleStore.serverError$;
 
   constructor(

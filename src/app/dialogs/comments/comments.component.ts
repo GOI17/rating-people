@@ -7,7 +7,7 @@ import { DialogData } from '@interfaces/dialogdata.interface';
   templateUrl: 'comments.component.html'
 })
 export class CommentsComponent implements OnInit {
-  enableCommentsForm: boolean = false;
+  enableCommentsForm = false;
 
   constructor(
     public context: MatDialogRef<CommentsComponent>,

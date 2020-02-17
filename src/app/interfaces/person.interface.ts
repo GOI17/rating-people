@@ -1,4 +1,4 @@
-import { Comment } from './comment.interface';
+import { Comment } from '@interfaces/comment.interface';
 
 export interface Person {
   id?: number;

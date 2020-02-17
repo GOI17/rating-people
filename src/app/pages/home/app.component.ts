@@ -6,7 +6,7 @@ import { People } from '@services/people.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
-constructor(private peopleStore: People) {
-  this.peopleStore.load();
-}
+  constructor(private peopleStore: People) {
+    this.peopleStore.load();
+  }
 }
