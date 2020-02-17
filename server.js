@@ -1,12 +1,12 @@
-import express, { static } from "express";
-import { join } from "path";
+const express = require("express");
+const path = require("path");
 
 const app = express();
 
-app.use(static(`${__dirname}/dist/rating-people`));
+app.use(express.static(`${__dirname}/dist/rating-people`));
 
 app.get("/*", (req, res) =>
-  res.sendFile(join(`${__dirname}/dist/rating-people/index.html`))
+  res.sendFile(path.join(`${__dirname}/dist/rating-people/index.html`))
 );
 
 app.listen(process.env.PORT || 8080);
