@@ -8,7 +8,7 @@ export class PersonFormValidators {
   constructor(private http: HttpClient) {}
 
   checkIfNameIsRegistered(name: string) {
-    return this.http.get('http://localhost:3000/people').pipe(
+    return this.http.get('https://protected-wave-08541.herokuapp.com/people').pipe(
       delay(1000),
       map((people: Person[]) => people.filter(person => person.name === name)),
       map(people => !people.length)
