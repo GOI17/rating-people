@@ -17,14 +17,14 @@ export class People {
   constructor(private http: HttpClient) {}
 
   load() {
-    this.http.get<Person[]>('http://localhost:3000/people').subscribe(
+    this.http.get<Person[]>('https://protected-wave-08541.herokuapp.com/people').subscribe(
       data => this.DataStore.next(data.reverse()),
       error => console.log(error)
     );
   }
 
   create(person: Person) {
-    this.http.post('http://localhost:3000/people', person).subscribe(
+    this.http.post('https://protected-wave-08541.herokuapp.com/people', person).subscribe(
       (response: Person) => {
         const people = [...this.DataStore.value, response];
         this.DataStore.next(people);
@@ -40,7 +40,7 @@ export class People {
 
   update(person: Person) {
     this.http
-      .put(`http://localhost:3000/people/${person.id}`, person)
+      .put(`https://protected-wave-08541.herokuapp.com/people/${person.id}`, person)
       .subscribe(
         (response: Person) => {
           this.people$.pipe(take(1)).subscribe(people => {
